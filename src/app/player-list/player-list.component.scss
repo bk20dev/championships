@@ -1,0 +1,35 @@
+.card-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  gap: 16px;
+
+  &__picture {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+  }
+
+  &__wrapper {
+    flex-grow: 1;
+  }
+
+  &__title {
+    color: #1c1b1f;
+    line-height: 24px;
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  &__description {
+    color: #49454e;
+    line-height: 20px;
+    font-size: 14px;
+    font-weight: 400;
+  }
+}
