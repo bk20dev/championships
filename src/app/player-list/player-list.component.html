@@ -1,9 +1,9 @@
 <div class="card-list">
   <div class="card" *ngFor="let player of players">
-    <img class="card__picture" src="{{ player.profilePicture }}" />
+    <img class="card__picture" src="https://via.placeholder.com/56" alt=""/>
     <div class="card__wrapper">
       <p class="card__title">{{ player.firstName }} {{ player.lastName }}</p>
-      <p class="card__description">{{ player.originClub }}</p>
+      <p class="card__description">{{ player.club }}</p>
     </div>
   </div>
 </div>

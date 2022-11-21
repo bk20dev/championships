@@ -3,14 +3,13 @@ export interface Player {
   firstName: string;
   lastName: string;
   dateOfBirth: Date;
-  profilePicture: string;
+  club: string;
   position: PlayerPosition;
-  originClub: string;
 }
 
 export enum PlayerPosition {
-  Keeper = 'keeper',
-  HalfBack = 'half-back',
-  Sweeper = 'sweeper',
-  Forward = 'forward',
+  Keeper = "keeper",
+  HalfBack = "half-back",
+  Sweeper = "sweeper",
+  Forward = "forward",
 }
