@@ -6,10 +6,11 @@ import { AppComponent } from "./app.component";
 import { NavigationComponent } from "./navigation/navigation.component";
 import { PlayerListComponent } from "./player-list/player-list.component";
 import { AgePipe } from "./age.pipe";
+import { PlayerDetailsComponent } from './player-details/player-details.component';
 
 @NgModule({
   declarations: [
-    AgePipe, AppComponent, PlayerListComponent, NavigationComponent,
+    AgePipe, AppComponent, PlayerListComponent, NavigationComponent, PlayerDetailsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
