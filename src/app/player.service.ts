@@ -26,4 +26,10 @@ export class PlayerService {
       .get<DataResponse<Player | undefined>>(url)
       .pipe(map(response => response.data));
   }
+
+  createPlayer(player: Omit<Player, "id">): Observable<Player> {
+    return this.http
+      .post<DataResponse<Player>>(PlayerService.baseUrl, player)
+      .pipe(map(response => response.data));
+  }
 }

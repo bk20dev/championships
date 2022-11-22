@@ -1,6 +1,9 @@
 import { Component } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { oneOf } from "../../api/validator";
+import { PlayerService } from "../player.service";
+import { Player } from "../../domain/Player";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-new-player-form",
@@ -24,7 +27,18 @@ export class NewPlayerFormComponent {
     ]),
   });
 
-  onSubmit(): void {
+  constructor(private playerService: PlayerService, private router: Router) {
+  }
 
+  onSubmit(): void {
+    if (this.playerForm.valid) {
+      const player = this.playerForm.value as Omit<Player, "id">;
+      this.playerService
+        .createPlayer(player)
+        .subscribe((player) => {
+          // noinspection JSIgnoredPromiseFromCall
+          this.router.navigate(["players", player.id]);
+        });
+    }
   }
 }
