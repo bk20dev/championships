@@ -6,13 +6,17 @@ import { AppComponent } from "./app.component";
 import { NavigationComponent } from "./navigation/navigation.component";
 import { PlayerListComponent } from "./player-list/player-list.component";
 import { AgePipe } from "./age.pipe";
-import { PlayerDetailsComponent } from './player-details/player-details.component';
+import { PlayerDetailsComponent } from "./player-details/player-details.component";
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
-    AgePipe, AppComponent, PlayerListComponent, NavigationComponent, PlayerDetailsComponent,
+    AgePipe, AppComponent, PlayerListComponent, NavigationComponent,
+    PlayerDetailsComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

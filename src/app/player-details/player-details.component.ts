@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { PlayerService } from "../player.service";
 import { Player } from "../../domain/Player";
 import { ActivatedRoute } from "@angular/router";
+import { FormControl, FormGroup } from "@angular/forms";
 
 @Component({
   selector: "app-player-details",
@@ -11,6 +12,16 @@ import { ActivatedRoute } from "@angular/router";
 export class PlayerDetailsComponent implements OnInit {
   player: Player | undefined;
   isDataLoaded = false;
+
+  readonly playerPositions = ["keeper", "half-back", "sweeper", "forward"];
+
+  playerForm = new FormGroup({
+    firstName: new FormControl(""),
+    lastName: new FormControl(""),
+    dateOfBirth: new FormControl(""),
+    club: new FormControl(""),
+    position: new FormControl(this.playerPositions[0]),
+  });
 
   constructor(private playerService: PlayerService, private route: ActivatedRoute) {
   }
