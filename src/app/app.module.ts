@@ -8,11 +8,13 @@ import { PlayerListComponent } from "./player-list/player-list.component";
 import { AgePipe } from "./age.pipe";
 import { PlayerDetailsComponent } from "./player-details/player-details.component";
 import { ReactiveFormsModule } from "@angular/forms";
+import { PlayerFormComponent } from './player-form/player-form.component';
 
 @NgModule({
   declarations: [
     AgePipe, AppComponent, PlayerListComponent, NavigationComponent,
     PlayerDetailsComponent,
+    PlayerFormComponent,
   ],
   imports: [
     BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule,
