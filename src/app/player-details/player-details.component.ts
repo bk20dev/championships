@@ -2,7 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { PlayerService } from "../player.service";
 import { Player } from "../../domain/Player";
 import { ActivatedRoute } from "@angular/router";
-import { FormControl, FormGroup } from "@angular/forms";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { oneOf } from "../../api/validator";
 
 @Component({
   selector: "app-player-details",
@@ -16,11 +17,17 @@ export class PlayerDetailsComponent implements OnInit {
   readonly playerPositions = ["keeper", "half-back", "sweeper", "forward"];
 
   playerForm = new FormGroup({
-    firstName: new FormControl(""),
-    lastName: new FormControl(""),
-    dateOfBirth: new FormControl(""),
-    club: new FormControl(""),
-    position: new FormControl(this.playerPositions[0]),
+    firstName: new FormControl("", [
+      Validators.required, Validators.minLength(2),
+    ]),
+    lastName: new FormControl("", [
+      Validators.required, Validators.minLength(2),
+    ]),
+    dateOfBirth: new FormControl("", Validators.required),
+    club: new FormControl("", Validators.required),
+    position: new FormControl(this.playerPositions[0], [
+      Validators.required, oneOf(this.playerPositions),
+    ]),
   });
 
   constructor(private playerService: PlayerService, private route: ActivatedRoute) {
