@@ -19,4 +19,11 @@ export class PlayerService {
       .get<DataResponse<Player[]>>(PlayerService.baseUrl)
       .pipe(map(response => response.data));
   }
+
+  getPlayer(id: string): Observable<Player | undefined> {
+    const url = `${PlayerService.baseUrl}/${id}`;
+    return this.http
+      .get<DataResponse<Player | undefined>>(url)
+      .pipe(map(response => response.data));
+  }
 }
