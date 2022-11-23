@@ -9,10 +9,11 @@ import { AgePipe } from "./age.pipe";
 import { PlayerDetailsComponent } from './player-details/player-details.component';
 import { NewPlayerFormComponent } from './new-player-form/new-player-form.component';
 import { ReactiveFormsModule } from "@angular/forms";
+import { EditPlayerFormComponent } from './edit-player-form/edit-player-form.component';
 
 @NgModule({
   declarations: [
-    AgePipe, AppComponent, PlayerListComponent, NavigationComponent, PlayerDetailsComponent, NewPlayerFormComponent,
+    AgePipe, AppComponent, PlayerListComponent, NavigationComponent, PlayerDetailsComponent, NewPlayerFormComponent, EditPlayerFormComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule,
     ReactiveFormsModule],
