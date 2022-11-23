@@ -32,4 +32,11 @@ export class PlayerService {
       .post<DataResponse<Player>>(PlayerService.baseUrl, player)
       .pipe(map(response => response.data));
   }
+
+  deletePlayer(id: string): Observable<Player | undefined> {
+    const url = `${PlayerService.baseUrl}/${id}`;
+    return this.http
+      .delete<DataResponse<Player | undefined>>(url)
+      .pipe(map(response => response.data));
+  }
 }
