@@ -10,7 +10,7 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class PlayerDetailsComponent implements OnInit {
   player: Player | undefined;
-  isDataLoaded = false;
+  isPlayerLoaded = false;
 
   constructor(private playerService: PlayerService, private route: ActivatedRoute) {
   }
@@ -18,14 +18,12 @@ export class PlayerDetailsComponent implements OnInit {
   ngOnInit(): void {
     const params = this.route.snapshot.paramMap;
     const playerId = params.get("playerId");
-    if (playerId === null) {
-      return;
-    }
+    if (playerId === null) return;
     this.playerService
       .getPlayer(playerId)
       .subscribe(player => {
         this.player = player;
-        this.isDataLoaded = true;
+        this.isPlayerLoaded = true;
       });
   }
 }

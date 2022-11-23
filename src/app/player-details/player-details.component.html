@@ -1,1 +1,15 @@
-<p>player-details works!</p>
+<p *ngIf="isPlayerLoaded && !player">
+  Player not found
+</p>
+
+<ng-container *ngIf="player">
+  <section>
+    <img class="card__picture" src="https://via.placeholder.com/160" alt=""/>
+    <h1>{{ player.firstName }} {{ player.lastName }}</h1>
+    <ul>
+      <li>{{ player.dateOfBirth | age }} years old</li>
+      <li>{{ player.position }}</li>
+      <li>{{ player.club }}</li>
+    </ul>
+  </section>
+</ng-container>
