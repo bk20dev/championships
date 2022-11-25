@@ -33,6 +33,13 @@ export class PlayerService {
       .pipe(map(response => response.data));
   }
 
+  updatePlayer(player: Player): Observable<Player> {
+    const url = `${PlayerService.baseUrl}/${player.id}`;
+    return this.http
+      .put<DataResponse<Player>>(url, player)
+      .pipe(map(response => response.data));
+  }
+
   deletePlayer(id: string): Observable<Player | undefined> {
     const url = `${PlayerService.baseUrl}/${id}`;
     return this.http

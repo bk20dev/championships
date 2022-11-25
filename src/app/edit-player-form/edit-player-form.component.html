@@ -1,1 +1,8 @@
-<p>edit-player-form works!</p>
+<ng-container *ngIf="originalPlayer">
+  <app-player-form (playerChange)="onPlayerChange($event)"
+                   [player]="originalPlayer"></app-player-form>
+  <button *ngIf="originalPlayer" [disabled]="!isValid" (click)="updatePlayer()">
+    Done
+  </button>
+</ng-container>
+<a routerLink="..">Cancel</a>
