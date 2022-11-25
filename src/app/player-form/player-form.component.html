@@ -1,1 +1,29 @@
-<p>player-form works!</p>
+<form [formGroup]="playerForm" (keyup)="onChange()" (change)="onChange()">
+  <div class="field-group">
+    <label for="firstNameInput">First name</label>
+    <input id="firstNameInput" type="text" formControlName="firstName"
+           minlength="2" required/>
+  </div>
+  <div class="field-group">
+    <label for="lastNameInput">Last name</label>
+    <input id="lastNameInput" type="text" formControlName="lastName"
+           minlength="2" required/>
+  </div>
+  <div class="field-group">
+    <label for="dateOfBirthInput">Date of birth</label>
+    <input id="dateOfBirthInput" type="date" formControlName="dateOfBirth"
+           required/>
+  </div>
+  <div class="field-group">
+    <label for="clubInput">Club</label>
+    <input id="clubInput" type="text" formControlName="club" required/>
+  </div>
+  <div class="field-group">
+    <label for="positionSelect">Position</label>
+    <select id="positionSelect" formControlName="position">
+      <option *ngFor="let position of playerPositions" [value]="position">
+        {{ position }}
+      </option>
+    </select>
+  </div>
+</form>
