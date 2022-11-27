@@ -1,1 +1,26 @@
-<app-player-form [player]="player"></app-player-form>
+<p *ngIf="isPlayerLoaded && !player">
+  Player not found
+</p>
+
+<ng-container *ngIf="player">
+  <section>
+    <img class="card__picture" src="https://via.placeholder.com/160" alt=""/>
+    <h1>{{ player.firstName }} {{ player.lastName }}</h1>
+    <ul>
+      <li>{{ player.dateOfBirth | age }} years old</li>
+      <li>{{ player.position }}</li>
+      <li>{{ player.club }}</li>
+    </ul>
+  </section>
+  <section>
+    <p><b>Tools</b></p>
+    <ul>
+      <li>
+        <a routerLink="edit">Edit</a>
+      </li>
+      <li>
+        <button (click)="deletePlayer()">Delete</button>
+      </li>
+    </ul>
+  </section>
+</ng-container>

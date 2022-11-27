@@ -7,13 +7,15 @@ import { NavigationComponent } from "./navigation/navigation.component";
 import { PlayerListComponent } from "./player-list/player-list.component";
 import { AgePipe } from "./age.pipe";
 import { PlayerDetailsComponent } from "./player-details/player-details.component";
+import { NewPlayerFormComponent } from "./new-player-form/new-player-form.component";
 import { ReactiveFormsModule } from "@angular/forms";
-import { PlayerFormComponent } from './player-form/player-form.component';
+import { EditPlayerFormComponent } from "./edit-player-form/edit-player-form.component";
+import { PlayerFormComponent } from "./player-form/player-form.component";
 
 @NgModule({
   declarations: [
     AgePipe, AppComponent, PlayerListComponent, NavigationComponent,
-    PlayerDetailsComponent,
+    PlayerDetailsComponent, NewPlayerFormComponent, EditPlayerFormComponent,
     PlayerFormComponent,
   ],
   imports: [

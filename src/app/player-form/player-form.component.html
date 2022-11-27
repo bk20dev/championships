@@ -1,4 +1,4 @@
-<form [formGroup]="playerForm" (submit)="onSubmit()">
+<form [formGroup]="playerForm" (keyup)="onChange()" (change)="onChange()">
   <div class="field-group">
     <label for="firstNameInput">First name</label>
     <input id="firstNameInput" type="text" formControlName="firstName"
@@ -19,12 +19,11 @@
     <input id="clubInput" type="text" formControlName="club" required/>
   </div>
   <div class="field-group">
-    <label for="positionSelect">First name</label>
+    <label for="positionSelect">Position</label>
     <select id="positionSelect" formControlName="position">
       <option *ngFor="let position of playerPositions" [value]="position">
         {{ position }}
       </option>
     </select>
   </div>
-  <button>Submit</button>
 </form>

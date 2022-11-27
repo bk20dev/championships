@@ -1,17 +1,25 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { oneOf } from "../../api/validator";
 import { Player } from "../../domain/Player";
+
+export interface PlayerChangeEvent {
+  valid: boolean,
+  player: Omit<Player, "id">
+}
 
 @Component({
   selector: "app-player-form",
   templateUrl: "./player-form.component.html",
   styleUrls: ["./player-form.component.scss"],
 })
-export class PlayerFormComponent {
+export class PlayerFormComponent implements OnInit {
+  @Output()
+  readonly playerChange = new EventEmitter<PlayerChangeEvent>();
+
   readonly playerPositions = ["keeper", "half-back", "sweeper", "forward"];
 
-  playerForm = new FormGroup({
+  readonly playerForm = new FormGroup({
     firstName: new FormControl("", [
       Validators.required, Validators.minLength(2),
     ]),
@@ -25,26 +33,25 @@ export class PlayerFormComponent {
     ]),
   });
 
-  @Output()
-  resultPlayer = new EventEmitter<Omit<Player, "id">>();
+  constructor() {
+  }
 
   @Input()
-  set player(player: Player | undefined) {
-    if (player) {
-      this.initializeForm(player);
-    }
-  }
-
-  onSubmit() {
-    if (this.playerForm.valid) {
-      const result = this.playerForm.value as Omit<Player, "id">;
-      this.resultPlayer.emit(result);
-    }
-  }
-
-  private initializeForm(player: Player) {
+  set player(player: Omit<Player, "id">) {
     const { firstName, lastName, dateOfBirth, club, position } = player;
-    const value = { firstName, lastName, dateOfBirth, club, position };
-    this.playerForm.setValue(value);
+    const playerValue = { firstName, lastName, dateOfBirth, club, position };
+    this.playerForm.setValue(playerValue);
+    this.onChange();
+  }
+
+  ngOnInit(): void {
+  }
+
+  onChange(): void {
+    const { valid, value } = this.playerForm;
+    const event: PlayerChangeEvent = {
+      valid, player: value as Omit<Player, "id">,
+    };
+    this.playerChange.emit(event);
   }
 }
