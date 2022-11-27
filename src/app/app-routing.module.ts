@@ -4,6 +4,7 @@ import { PlayerListComponent } from "./player-list/player-list.component";
 import { PlayerDetailsComponent } from "./player-details/player-details.component";
 import { NewPlayerFormComponent } from "./new-player-form/new-player-form.component";
 import { EditPlayerFormComponent } from "./edit-player-form/edit-player-form.component";
+import { TeamListComponent } from "./team-list/team-list.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/players", pathMatch: "full" },
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: "players/new", component: NewPlayerFormComponent },
   { path: "players/:playerId", component: PlayerDetailsComponent },
   { path: "players/:playerId/edit", component: EditPlayerFormComponent },
+  { path: "teams", component: TeamListComponent },
 ];
 
 @NgModule({
