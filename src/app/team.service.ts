@@ -19,4 +19,11 @@ export class TeamService {
       .get<DataResponse<Team[]>>(TeamService.baseUrl)
       .pipe(map(response => response.data));
   }
+
+  getTeam(id: string): Observable<Team | undefined> {
+    const url = `${TeamService.baseUrl}/${id}`;
+    return this.http
+      .get<DataResponse<Team | undefined>>(url)
+      .pipe(map(response => response.data));
+  }
 }
