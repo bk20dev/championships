@@ -1,1 +1,3 @@
-<p>new-team-form works!</p>
+<app-team-form (teamChange)="onTeamChange($event)"></app-team-form>
+<button [disabled]="!isValid" (click)="createTeam()">Done</button>
+<a routerLink="..">Cancel</a>
