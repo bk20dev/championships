@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Team } from "../../domain/Team";
 import { TeamService } from "../team.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: "app-team-details",
@@ -11,7 +11,10 @@ import { ActivatedRoute } from "@angular/router";
 export class TeamDetailsComponent implements OnInit {
   team: Team | undefined;
 
-  constructor(private teamService: TeamService, private route: ActivatedRoute) {
+  constructor(
+    private teamService: TeamService,
+    private route: ActivatedRoute,
+    private router: Router) {
   }
 
   ngOnInit(): void {
@@ -23,6 +26,17 @@ export class TeamDetailsComponent implements OnInit {
       .getTeam(teamId)
       .subscribe(team => {
         this.team = team;
+      });
+  }
+
+  deleteTeam(): void {
+    if (!this.team) return;
+
+    this.teamService
+      .deleteTeam(this.team.id)
+      .subscribe(() => {
+        // noinspection JSIgnoredPromiseFromCall
+        this.router.navigate(["teams"]);
       });
   }
 }

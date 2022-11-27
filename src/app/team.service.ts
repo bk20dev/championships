@@ -26,4 +26,11 @@ export class TeamService {
       .get<DataResponse<Team | undefined>>(url)
       .pipe(map(response => response.data));
   }
+
+  deleteTeam(id: string): Observable<Team | undefined> {
+    const url = `${TeamService.baseUrl}/${id}`;
+    return this.http
+      .delete<DataResponse<Team>>(url)
+      .pipe(map(response => response.data));
+  }
 }
