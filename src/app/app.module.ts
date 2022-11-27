@@ -12,12 +12,13 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { EditPlayerFormComponent } from "./edit-player-form/edit-player-form.component";
 import { PlayerFormComponent } from "./player-form/player-form.component";
 import { TeamListComponent } from "./team-list/team-list.component";
+import { TeamDetailsComponent } from './team-details/team-details.component';
 
 @NgModule({
   declarations: [
     AgePipe, AppComponent, PlayerListComponent, NavigationComponent,
     PlayerDetailsComponent, NewPlayerFormComponent, EditPlayerFormComponent,
-    PlayerFormComponent, TeamListComponent,
+    PlayerFormComponent, TeamListComponent, TeamDetailsComponent,
   ],
   imports: [
     BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule,
