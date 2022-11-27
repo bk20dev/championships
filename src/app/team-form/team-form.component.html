@@ -1,1 +1,5 @@
-<p>team-form works!</p>
+<form [formGroup]="teamForm" (keyup)="onChange()" (change)="onChange()">
+  <label for="nameInput">Name</label>
+  <input id="nameInput" type="text" formControlName="name" minlength="2"
+         required>
+</form>
