@@ -1,3 +1,5 @@
+<a routerLink="new">New team</a>
+
 <div class="card-list">
   <a class="card" *ngFor="let team of teams" [routerLink]="team.id">
     <p class="card__title">{{ team.name }}</p>
