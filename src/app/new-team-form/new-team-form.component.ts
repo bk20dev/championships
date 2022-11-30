@@ -1,6 +1,5 @@
 import { Component } from "@angular/core";
 import { Team } from "../../domain/Team";
-import { TeamChangeEvent } from "../team-form/team-form.component";
 import { TeamService } from "../team.service";
 import { Router } from "@angular/router";
 
@@ -10,22 +9,21 @@ import { Router } from "@angular/router";
   styleUrls: ["./new-team-form.component.scss"],
 })
 export class NewTeamFormComponent {
+  newTeam: Omit<Team, "id"> = { name: "" };
   isValid = false;
-  team!: Omit<Team, "id">;
 
   constructor(
     private teamService: TeamService,
     private router: Router) {
   }
 
-  onTeamChange(event: TeamChangeEvent): void {
-    this.isValid = event.valid;
-    this.team = event.team;
+  updateIsValid(isFormValid: boolean): void {
+    this.isValid = isFormValid;
   }
 
   createTeam(): void {
     this.teamService
-      .createTeam(this.team)
+      .createTeam(this.newTeam)
       .subscribe(async (team) => {
         await this.router.navigate(["teams", team.id]);
       });

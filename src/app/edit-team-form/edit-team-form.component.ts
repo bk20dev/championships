@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Team } from "../../domain/Team";
 import { TeamService } from "../team.service";
-import { TeamChangeEvent } from "../team-form/team-form.component";
 
 @Component({
   selector: "app-edit-team-form",
@@ -10,9 +9,8 @@ import { TeamChangeEvent } from "../team-form/team-form.component";
   styleUrls: ["./edit-team-form.component.scss"],
 })
 export class EditTeamFormComponent implements OnInit {
-  originalTeam: Team | undefined;
   updatedTeam: Omit<Team, "id"> | undefined;
-  isTeamLoaded = true;
+  teamId!: string;
   isValid = false;
 
   constructor(
@@ -23,31 +21,26 @@ export class EditTeamFormComponent implements OnInit {
 
   ngOnInit(): void {
     const params = this.route.snapshot.paramMap;
-    const playerId = params.get("teamId");
-    if (!playerId) return;
+    this.teamId = params.get("teamId")!;
+
     this.teamService
-      .getTeam(playerId)
+      .getTeam(this.teamId)
       .subscribe(team => {
-        this.originalTeam = team;
-        this.isTeamLoaded = true;
+        this.updatedTeam = team;
       });
   }
 
-  onTeamChange(event: TeamChangeEvent): void {
-    this.isValid = event.valid;
-    this.updatedTeam = event.team;
+  updateIsValid(isFormValid: boolean) {
+    this.isValid = isFormValid;
   }
 
   updateTeam(): void {
-    if (!this.originalTeam) return;
-    if (!this.updatedTeam) return;
-
-    const id = this.originalTeam.id;
-    const pendingUpdate = { ...this.updatedTeam, id };
-    this.teamService
-      .updateTeam(pendingUpdate)
-      .subscribe(async () => {
-        await this.router.navigate(["teams", id]);
-      });
+    if (this.updatedTeam) {
+      this.teamService
+        .updateTeam({ ...this.updatedTeam, id: this.teamId })
+        .subscribe(async () => {
+          await this.router.navigate(["teams", this.teamId]);
+        });
+    }
   }
 }

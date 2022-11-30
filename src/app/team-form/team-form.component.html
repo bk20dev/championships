@@ -1,5 +1,6 @@
-<form [formGroup]="teamForm" (keyup)="onChange()" (change)="onChange()">
+<form [formGroup]="teamForm">
   <label for="nameInput">Name</label>
-  <input id="nameInput" type="text" formControlName="name" minlength="2"
-         required>
+  <input formControlName="name" (keyup)="onChange()"
+         id="nameInput" type="text"
+         minlength="2" required>
 </form>
