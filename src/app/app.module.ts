@@ -15,13 +15,14 @@ import { TeamListComponent } from "./team-list/team-list.component";
 import { TeamDetailsComponent } from "./team-details/team-details.component";
 import { TeamFormComponent } from "./team-form/team-form.component";
 import { NewTeamFormComponent } from "./new-team-form/new-team-form.component";
+import { EditTeamFormComponent } from './edit-team-form/edit-team-form.component';
 
 @NgModule({
   declarations: [
     AgePipe, AppComponent, PlayerListComponent, NavigationComponent,
     PlayerDetailsComponent, NewPlayerFormComponent, EditPlayerFormComponent,
     PlayerFormComponent, TeamListComponent, TeamDetailsComponent,
-    TeamFormComponent, NewTeamFormComponent,
+    TeamFormComponent, NewTeamFormComponent, EditTeamFormComponent,
   ],
   imports: [
     BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule,
