@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { PlayerChangeEvent } from "../player-form/player-form.component";
 import { PlayerService } from "../player.service";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Player } from "../../domain/Player";
+import { Player } from "../../../domain/Player";
 
 @Component({
   selector: "app-edit-player-form",

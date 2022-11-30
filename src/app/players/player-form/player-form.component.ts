@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { oneOf } from "../../api/validator";
-import { Player } from "../../domain/Player";
+import { oneOf } from "../../../api/validator";
+import { Player } from "../../../domain/Player";
 
 export interface PlayerChangeEvent {
   valid: boolean,

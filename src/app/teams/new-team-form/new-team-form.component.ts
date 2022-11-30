@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { Team } from "../../domain/Team";
+import { Team } from "../../../domain/Team";
 import { TeamService } from "../team.service";
 import { Router } from "@angular/router";
 

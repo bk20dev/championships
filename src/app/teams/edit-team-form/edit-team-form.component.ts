@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Team } from "../../domain/Team";
+import { Team } from "../../../domain/Team";
 import { TeamService } from "../team.service";
 
 @Component({

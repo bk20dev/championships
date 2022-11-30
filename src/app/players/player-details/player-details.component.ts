@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { PlayerService } from "../player.service";
-import { Player } from "../../domain/Player";
+import { Player } from "../../../domain/Player";
 import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({

@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { PlayerService } from "../player.service";
 import { Router } from "@angular/router";
 import { PlayerChangeEvent } from "../player-form/player-form.component";
-import { Player } from "../../domain/Player";
+import { Player } from "../../../domain/Player";
 
 @Component({
   selector: "app-new-player-form",

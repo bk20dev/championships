@@ -1,13 +1,13 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { PlayerListComponent } from "./player-list/player-list.component";
-import { PlayerDetailsComponent } from "./player-details/player-details.component";
-import { NewPlayerFormComponent } from "./new-player-form/new-player-form.component";
-import { EditPlayerFormComponent } from "./edit-player-form/edit-player-form.component";
-import { TeamListComponent } from "./team-list/team-list.component";
-import { TeamDetailsComponent } from "./team-details/team-details.component";
-import { NewTeamFormComponent } from "./new-team-form/new-team-form.component";
-import { EditTeamFormComponent } from "./edit-team-form/edit-team-form.component";
+import { PlayerListComponent } from "./players/player-list/player-list.component";
+import { PlayerDetailsComponent } from "./players/player-details/player-details.component";
+import { NewPlayerFormComponent } from "./players/new-player-form/new-player-form.component";
+import { EditPlayerFormComponent } from "./players/edit-player-form/edit-player-form.component";
+import { TeamListComponent } from "./teams/team-list/team-list.component";
+import { TeamDetailsComponent } from "./teams/team-details/team-details.component";
+import { NewTeamFormComponent } from "./teams/new-team-form/new-team-form.component";
+import { EditTeamFormComponent } from "./teams/edit-team-form/edit-team-form.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/players", pathMatch: "full" },
