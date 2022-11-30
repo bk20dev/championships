@@ -1,4 +1,7 @@
 <ul>
-  <li><a routerLink="/players">Players</a></li>
-  <li><a routerLink="/teams">Teams</a></li>
+  <li class="link" *ngFor="let link of links" routerLinkActive="active">
+    <img class="icon" [src]="link.iconPath" alt=""/>
+    <span class="label">{{ link.label }}</span>
+    <a [routerLink]="link.link"></a>
+  </li>
 </ul>
