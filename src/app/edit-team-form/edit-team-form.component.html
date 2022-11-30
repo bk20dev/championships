@@ -1,1 +1,7 @@
-<p>edit-team-form works!</p>
+<ng-container *ngIf="originalTeam">
+  <app-team-form (teamChange)="onTeamChange($event)"
+                 [team]="originalTeam"></app-team-form>
+  <button [disabled]="!isValid" (click)="updateTeam()">
+    Done
+  </button>
+</ng-container>

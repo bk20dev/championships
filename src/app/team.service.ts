@@ -33,6 +33,13 @@ export class TeamService {
       .pipe(map(response => response.data));
   }
 
+  updateTeam(team: Team): Observable<Team> {
+    const url = `${TeamService.baseUrl}/${team.id}`;
+    return this.http
+      .put<DataResponse<Team>>(url, team)
+      .pipe(map(response => response.data));
+  }
+
   deleteTeam(id: string): Observable<Team | undefined> {
     const url = `${TeamService.baseUrl}/${id}`;
     return this.http
