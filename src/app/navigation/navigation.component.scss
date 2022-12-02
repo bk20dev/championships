@@ -18,13 +18,13 @@ ul {
   width: 100%;
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  opacity: 0.6;
 
-  &:hover {
+  &:hover, &.active {
     background: #E8DEF8;
-  }
-
-  &.active {
-    background: #E8DEF8;
+    opacity: 1;
   }
 
   a {
@@ -38,7 +38,9 @@ ul {
 }
 
 .icon {
-
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
 }
 
 .label {
