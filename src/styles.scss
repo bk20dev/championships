@@ -1,18 +1,2 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: "Roboto", sans-serif;
-}
-
-html, body {
-  height: 100%;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
+@use 'base.css';
+@use 'common.scss';
