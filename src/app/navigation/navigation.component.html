@@ -1,7 +1,7 @@
 <ul>
-  <li class="link" *ngFor="let link of links" routerLinkActive="active">
-    <img class="icon" [src]="link.iconPath" alt=""/>
-    <span class="label">{{ link.label }}</span>
-    <a [routerLink]="link.link"></a>
+  <li class="button" *ngFor="let link of links" routerLinkActive="active">
+    <img class="button__icon" [src]="link.iconPath" alt="" />
+    <span class="button__label">{{ link.label }}</span>
+    <a [routerLink]="link.link" class="button__link"></a>
   </li>
 </ul>

@@ -1,4 +1,8 @@
-<a routerLink="new">New player</a>
+<div class="button">
+  <img src="assets/add_FILL0_wght400_GRAD0_opsz24.svg" alt="" class="button__icon" />
+  <span class="button__label">New player</span>
+  <a routerLink="new" class="button__link"></a>
+</div>
 
 <div class="card-list">
   <a class="card" *ngFor="let player of players" [routerLink]="player.id">
