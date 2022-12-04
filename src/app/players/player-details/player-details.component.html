@@ -4,18 +4,22 @@
 
 <article *ngIf="player" class="profile">
   <header>
+    <ul class="tools">
+      <li class="button">
+        <img class="button__icon" src="assets/arrow_back_FILL0_wght400_GRAD0_opsz24.svg" alt=""/>
+        <a routerLink=".." class="button__link"></a>
+      </li>
+    </ul>
     <img class="picture" src="https://via.placeholder.com/160" alt=""/>
-    <menu class="tools">
-      <ul>
-        <li class="button">
-          <img class="button__icon" src="assets/edit_FILL0_wght400_GRAD0_opsz24.svg" alt=""/>
-          <a routerLink="edit" class="button__link"></a>
-        </li>
-        <li class="button" (click)="deletePlayer()">
-          <img class="button__icon" src="assets/delete_FILL0_wght400_GRAD0_opsz24.svg" alt=""/>
-        </li>
-      </ul>
-    </menu>
+    <ul class="tools" style="justify-self: end">
+      <li class="button">
+        <img class="button__icon" src="assets/edit_FILL0_wght400_GRAD0_opsz24.svg" alt=""/>
+        <a routerLink="edit" class="button__link"></a>
+      </li>
+      <li class="button" (click)="deletePlayer()">
+        <img class="button__icon" src="assets/delete_FILL0_wght400_GRAD0_opsz24.svg" alt=""/>
+      </li>
+    </ul>
   </header>
   <section class="details">
     <h1 class="details__title">{{ player.firstName }} {{ player.lastName }}</h1>

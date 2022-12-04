@@ -14,7 +14,6 @@
 
     .picture {
       border: 8px solid color.$background;
-      grid-column: 2;
       width: 176px;
       height: 176px;
       object-fit: contain;
@@ -25,29 +24,24 @@
     }
 
     .tools {
-      grid-column: 3;
-      justify-self: end;
       padding: 8px;
+      list-style: none;
+      display: flex;
+      align-items: start;
 
-      ul {
-        list-style: none;
-        display: flex;
-        padding: 0;
+      .button {
+        background-color: transparent;
+        opacity: 0.6;
+        padding: 12px;
 
-        .button {
-          background-color: transparent;
-          opacity: 0.6;
-          padding: 12px;
+        &__icon {
+          filter: none;
+          margin-right: 0;
+        }
 
-          &__icon {
-            filter: none;
-            margin-right: 0;
-          }
-
-          &:hover {
-            background-color: color.$secondary-container;
-            opacity: 1;
-          }
+        &:hover {
+          background-color: color.$secondary-container;
+          opacity: 1;
         }
       }
     }
