@@ -2,25 +2,33 @@
   Player not found
 </p>
 
-<ng-container *ngIf="player">
-  <section>
-    <img class="card__picture" src="https://via.placeholder.com/160" alt=""/>
-    <h1>{{ player.firstName }} {{ player.lastName }}</h1>
-    <ul>
-      <li>{{ player.dateOfBirth | age }} years old</li>
-      <li>{{ player.position }}</li>
-      <li>{{ player.club }}</li>
+<article *ngIf="player" class="profile">
+  <header>
+    <img class="picture" src="https://via.placeholder.com/160" alt=""/>
+    <menu class="tools">
+      <ul>
+        <li class="button">
+          <img class="button__icon" src="assets/edit_FILL0_wght400_GRAD0_opsz24.svg" alt=""/>
+          <a routerLink="edit" class="button__link"></a>
+        </li>
+        <li class="button" (click)="deletePlayer()">
+          <img class="button__icon" src="assets/delete_FILL0_wght400_GRAD0_opsz24.svg" alt=""/>
+        </li>
+      </ul>
+    </menu>
+  </header>
+  <section class="details">
+    <h1 class="details__title">{{ player.firstName }} {{ player.lastName }}</h1>
+    <em class="details__line">{{ player.dateOfBirth | age }} years old</em>
+    <ul class="tile-list">
+      <li class="tile">
+        <img class="tile__icon" src="assets/sports_soccer_FILL0_wght400_GRAD0_opsz24.svg" alt=""/>
+        <span class="tile__line">{{ player.position }}</span>
+      </li>
+      <li class="tile">
+        <img class="tile__icon" src="assets/flag_FILL0_wght400_GRAD0_opsz24.svg" alt=""/>
+        <span class="tile__line">{{ player.club }}</span>
+      </li>
     </ul>
   </section>
-  <section>
-    <p><b>Tools</b></p>
-    <ul>
-      <li>
-        <a routerLink="edit">Edit</a>
-      </li>
-      <li>
-        <button (click)="deletePlayer()">Delete</button>
-      </li>
-    </ul>
-  </section>
-</ng-container>
+</article>
