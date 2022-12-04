@@ -8,12 +8,14 @@
   display: flex;
   width: max-content;
   align-items: center;
-  background: color.$primary;
+  background-color: color.$primary;
   color: color.$on-primary;
   cursor: pointer;
+  border: none;
+  font: inherit;
 
   &:hover {
-    background: color.$primary-variant;
+    background-color: color.$primary-variant;
   }
 
   &__icon {
@@ -23,15 +25,21 @@
     filter: invert(1);
   }
 
-  &__label {
-
-  }
-
   &__link {
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
+  }
+
+  &--outlined {
+    background-color: transparent;
+    color: color.$primary;
+    border: 2px solid color.$primary;
+
+    &:hover {
+      background-color: color.$secondary-container;
+    }
   }
 }
