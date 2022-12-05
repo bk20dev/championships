@@ -1,0 +1,26 @@
+form {
+  label, input {
+    width: 256px;
+    display: block;
+  }
+
+  label {
+    font-size: 0.88em;
+    padding: 6px 4px;
+    margin-top: 8px;
+
+    &:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+  }
+
+  input {
+    padding: 16px 16px 14px;
+    font-size: inherit;
+    border: none;
+    border-bottom: 2px solid #ddd;
+    border-radius: 8px 8px 0 0;
+    background: #f3f3f3;
+  }
+}
