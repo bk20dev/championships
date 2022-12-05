@@ -1,7 +1,12 @@
-<a routerLink="new">New team</a>
+<div class="button">
+  <img src="assets/add_FILL0_wght400_GRAD0_opsz24.svg" alt="" class="button__icon" />
+  <span class="button__label">New team</span>
+  <a routerLink="new" class="button__link"></a>
+</div>
 
 <div class="card-list">
-  <a class="card" *ngFor="let team of teams" [routerLink]="team.id">
-    <p class="card__title">{{ team.name }}</p>
-  </a>
+  <article class="card" *ngFor="let team of teams">
+    <span class="card__label">{{ team.name }}</span>
+    <a class="card__link" [routerLink]="team.id"></a>
+  </article>
 </div>
