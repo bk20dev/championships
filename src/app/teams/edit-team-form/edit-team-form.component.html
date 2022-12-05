@@ -1,6 +1,14 @@
-<ng-container *ngIf="updatedTeam">
+<section class="container" *ngIf="updatedTeam">
+  <h1>Edit team</h1>
   <app-team-form [(team)]="updatedTeam"
                  (valid)="updateIsValid($event)"></app-team-form>
-
-  <button [disabled]="!isValid" (click)="updateTeam()">Done</button>
-</ng-container>
+  <div class="actions">
+    <button class="button" [disabled]="!isValid" (click)="updateTeam()">
+      <span class="button__label">Done</span>
+    </button>
+    <p class="button button--outlined">
+      <span class="button__label">Cancel</span>
+      <a routerLink=".." class="button__link"></a>
+    </p>
+  </div>
+</section>
