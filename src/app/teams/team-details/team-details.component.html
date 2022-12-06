@@ -1,16 +1,31 @@
-<ng-container *ngIf="team">
-  <section>
-    <h1>{{ team.name }}</h1>
-  </section>
-  <section>
-    <p><b>Tools</b></p>
-    <ul>
-      <li>
-        <a routerLink="edit">Edit</a>
-      </li>
-      <li>
-        <button (click)="deleteTeam()">Delete</button>
+<article *ngIf="team" class="team">
+  <header>
+    <ul class="tools">
+      <li class="button">
+        <img alt="" class="button__icon" src="assets/arrow_back_FILL0_wght400_GRAD0_opsz24.svg"/>
+        <a class="button__link" routerLink=".."></a>
       </li>
     </ul>
+    <h1 class="team-name">
+      {{ team.name }}
+    </h1>
+    <ul class="tools" style="justify-self: end">
+      <li class="button">
+        <img alt="" class="button__icon" src="assets/edit_FILL0_wght400_GRAD0_opsz24.svg"/>
+        <a class="button__link" routerLink="edit"></a>
+      </li>
+      <li (click)="deleteTeam()" class="button">
+        <img alt="" class="button__icon" src="assets/delete_FILL0_wght400_GRAD0_opsz24.svg"/>
+      </li>
+    </ul>
+  </header>
+  <section class="pickers">
+    <!--    <div class="player-picker">-->
+    <!--      <p>Keepers</p>-->
+    <!--      <article *ngFor="let player of team">-->
+    <!--        <p></p>-->
+    <!--        <em>{{ }}</em>-->
+    <!--      </article>-->
+    <!--    </div>-->
   </section>
-</ng-container>
+</article>
