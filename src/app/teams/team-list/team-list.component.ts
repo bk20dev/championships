@@ -1,6 +1,6 @@
-import { Component, OnInit } from "@angular/core";
-import { Team } from "../../../domain/Team";
-import { TeamService } from "../team.service";
+import {Component, OnInit} from "@angular/core";
+import {TeamPreview} from "../../../domain/Team";
+import {TeamService} from "../team.service";
 
 @Component({
   selector: "app-team-list",
@@ -8,7 +8,7 @@ import { TeamService } from "../team.service";
   styleUrls: ["./team-list.component.scss"],
 })
 export class TeamListComponent implements OnInit {
-  teams: Team[] = [];
+  teams: TeamPreview[] = [];
 
   constructor(private teamService: TeamService) {
   }

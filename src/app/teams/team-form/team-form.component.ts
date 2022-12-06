@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { Team } from "../../../domain/Team";
+import {Component, EventEmitter, Input, Output} from "@angular/core";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {TeamPreview} from "../../../domain/Team";
 
 @Component({
   selector: "app-team-form",
@@ -15,21 +15,21 @@ export class TeamFormComponent {
   });
 
   @Output()
-  readonly teamChange = new EventEmitter<Omit<Team, "id">>();
+  readonly teamChange = new EventEmitter<Omit<TeamPreview, "id">>();
 
   @Output()
   readonly valid = new EventEmitter<boolean>();
 
   @Input()
-  set team(team: Omit<Team, "id">) {
-    const { name } = team;
-    this.teamForm.setValue({ name });
+  set team(team: Omit<TeamPreview, "id">) {
+    const {name} = team;
+    this.teamForm.setValue({name});
     this.valid.emit(this.teamForm.valid);
   }
 
   onChange(): void {
-    const { valid, value } = this.teamForm;
-    this.teamChange.emit(value as Omit<Team, "id">);
+    const {valid, value} = this.teamForm;
+    this.teamChange.emit(value as { name: string });
     this.valid.emit(valid);
   }
 }

@@ -1,9 +1,9 @@
-import { Injectable } from "@angular/core";
-import { environment } from "../../environments/environment";
-import { HttpClient } from "@angular/common/http";
-import { map, Observable } from "rxjs";
-import { DataResponse } from "../../api/api";
-import { Team } from "../../domain/Team";
+import {Injectable} from "@angular/core";
+import {environment} from "../../environments/environment";
+import {HttpClient} from "@angular/common/http";
+import {map, Observable} from "rxjs";
+import {DataResponse} from "../../api/api";
+import {Team, TeamPreview} from "../../domain/Team";
 
 @Injectable({
   providedIn: "root",
@@ -14,9 +14,9 @@ export class TeamService {
   constructor(private http: HttpClient) {
   }
 
-  getAllTeams(): Observable<Team[]> {
+  getAllTeams(): Observable<TeamPreview[]> {
     return this.http
-      .get<DataResponse<Team[]>>(TeamService.baseUrl)
+      .get<DataResponse<TeamPreview[]>>(TeamService.baseUrl)
       .pipe(map(response => response.data));
   }
 
@@ -27,7 +27,7 @@ export class TeamService {
       .pipe(map(response => response.data));
   }
 
-  createTeam(team: Omit<Team, "id">): Observable<Team> {
+  createTeam(team: Omit<Team | TeamPreview, "id">): Observable<Team> {
     return this.http
       .post<DataResponse<Team>>(TeamService.baseUrl, team)
       .pipe(map(response => response.data));

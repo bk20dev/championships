@@ -1,7 +1,7 @@
-import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
-import { Team } from "../../../domain/Team";
-import { TeamService } from "../team.service";
+import {Component, OnInit} from "@angular/core";
+import {ActivatedRoute, Router} from "@angular/router";
+import {Team, TeamPreview} from "../../../domain/Team";
+import {TeamService} from "../team.service";
 
 @Component({
   selector: "app-edit-team-form",
@@ -9,8 +9,8 @@ import { TeamService } from "../team.service";
   styleUrls: ["./edit-team-form.component.scss"],
 })
 export class EditTeamFormComponent implements OnInit {
-  updatedTeam: Omit<Team, "id"> | undefined;
-  teamId!: string;
+  updatedTeam: Omit<TeamPreview, "id"> | undefined;
+  originalTeam: Team | undefined;
   isValid = false;
 
   constructor(
@@ -21,11 +21,12 @@ export class EditTeamFormComponent implements OnInit {
 
   ngOnInit(): void {
     const params = this.route.snapshot.paramMap;
-    this.teamId = params.get("teamId")!;
+    const teamId = params.get("teamId")!;
 
     this.teamService
-      .getTeam(this.teamId)
+      .getTeam(teamId)
       .subscribe(team => {
+        this.originalTeam = team;
         this.updatedTeam = team;
       });
   }
@@ -35,11 +36,12 @@ export class EditTeamFormComponent implements OnInit {
   }
 
   updateTeam(): void {
-    if (this.updatedTeam) {
+    if (this.updatedTeam && this.originalTeam) {
+      const {players, id} = this.originalTeam
       this.teamService
-        .updateTeam({ ...this.updatedTeam, id: this.teamId })
+        .updateTeam({...this.updatedTeam, players, id})
         .subscribe(async () => {
-          await this.router.navigate(["teams", this.teamId]);
+          await this.router.navigate(["teams", id]);
         });
     }
   }

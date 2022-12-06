@@ -1,7 +1,7 @@
-import { Component } from "@angular/core";
-import { Team } from "../../../domain/Team";
-import { TeamService } from "../team.service";
-import { Router } from "@angular/router";
+import {Component} from "@angular/core";
+import {TeamPreview} from "../../../domain/Team";
+import {TeamService} from "../team.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: "app-new-team-form",
@@ -9,7 +9,7 @@ import { Router } from "@angular/router";
   styleUrls: ["./new-team-form.component.scss"],
 })
 export class NewTeamFormComponent {
-  newTeam: Omit<Team, "id"> = { name: "" };
+  newTeam: Omit<TeamPreview, "id"> = {name: ""};
   isValid = false;
 
   constructor(
