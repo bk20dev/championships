@@ -1,1 +1,18 @@
-<p>player-search works!</p>
+<div class="backdrop"></div>
+
+<dialog open>
+  <button class="button close-button">
+    <img alt="" class="button__icon" src="assets/close_FILL0_wght400_GRAD0_opsz20.svg"/>
+  </button>
+  <p class="heading">Select player</p>
+  <input class="search" placeholder="Search..." type="text"/>
+  <ul class="players">
+    <li *ngFor="let player of players" class="player">
+      <img alt="" class="player-avatar" src="https://via.placeholder.com/48"/>
+      <div class="player-info">
+        <p class="player-name">{{ player.firstName }} {{ player.lastName }}</p>
+        <p class="player-line">{{ player.club }} · {{ player.dateOfBirth | age }} years old</p>
+      </div>
+    </li>
+  </ul>
+</dialog>
