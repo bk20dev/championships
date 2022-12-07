@@ -20,12 +20,6 @@
     </ul>
   </header>
   <section class="pickers">
-    <!--    <div class="player-picker">-->
-    <!--      <p>Keepers</p>-->
-    <!--      <article *ngFor="let player of team">-->
-    <!--        <p></p>-->
-    <!--        <em>{{ }}</em>-->
-    <!--      </article>-->
-    <!--    </div>-->
+    <app-player-picker [maxPlayers]="3" [players]="team.players" category="Keepers"></app-player-picker>
   </section>
 </article>

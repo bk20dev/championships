@@ -1,1 +1,17 @@
-<p>player-picker works!</p>
+<p class="category">{{ category }}</p>
+<ul class="cards">
+  <li *ngFor="let player of players" class="card player">
+    <button (click)="deletePlayer(player.id)" class="delete">
+      <img alt="Delete" src="assets/close_FILL0_wght400_GRAD0_opsz20.svg"/>
+    </button>
+    <img alt="" class="player__picture" src="https://via.placeholder.com/96"/>
+    <p class="player__name">{{ player.firstName[0]}}. {{ player.lastName}}</p>
+    <em class="player__line">{{ player.dateOfBirth | age }} y/o</em>
+  </li>
+  <li class="card add">
+    <button (click)="addPlayer()" class="button">
+      <img alt="" class="button__icon" src="assets/add_FILL0_wght400_GRAD0_opsz24.svg"/>
+    </button>
+    <p>Add</p>
+  </li>
+</ul>

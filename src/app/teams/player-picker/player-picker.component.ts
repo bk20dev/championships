@@ -1,16 +1,30 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {Player} from "../../../domain/Player";
 
 @Component({
   selector: 'app-player-picker',
   templateUrl: './player-picker.component.html',
   styleUrls: ['./player-picker.component.scss']
 })
-export class PlayerPickerComponent implements OnInit {
+export class PlayerPickerComponent {
+
+  @Input()
+  category: string = "";
+
+  @Input()
+  players: Player[] = [];
+
+  @Input()
+  maxPlayers: number = 0;
 
   constructor() {
   }
 
-  ngOnInit(): void {
+  addPlayer(): void {
+
   }
 
+  deletePlayer(id: string): void {
+
+  }
 }
