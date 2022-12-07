@@ -17,13 +17,14 @@ import {TeamFormComponent} from "./teams/team-form/team-form.component";
 import {NewTeamFormComponent} from "./teams/new-team-form/new-team-form.component";
 import {EditTeamFormComponent} from './teams/edit-team-form/edit-team-form.component';
 import {PlayerPickerComponent} from './teams/player-picker/player-picker.component';
+import {PlayerSearchComponent} from './teams/player-search/player-search.component';
 
 @NgModule({
   declarations: [
     AgePipe, AppComponent, PlayerListComponent, NavigationComponent,
     PlayerDetailsComponent, NewPlayerFormComponent, EditPlayerFormComponent,
     PlayerFormComponent, TeamListComponent, TeamDetailsComponent,
-    TeamFormComponent, NewTeamFormComponent, EditTeamFormComponent, PlayerPickerComponent,
+    TeamFormComponent, NewTeamFormComponent, EditTeamFormComponent, PlayerPickerComponent, PlayerSearchComponent,
   ],
   imports: [
     BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule,
