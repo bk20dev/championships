@@ -75,6 +75,19 @@
   .add {
     justify-content: center;
 
+    &:has(.add-button:disabled) {
+      background: transparent;
+      color: #a3a3a3;
+    }
+
+    .add-button:disabled, .add-button:disabled:hover {
+      background-color: #f3f3f3;
+
+      .button__icon {
+        filter: invert(.5);
+      }
+    }
+
     .button {
       padding: 12px;
       margin-bottom: 12px;

@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Player} from "../../../domain/Player";
 
 @Component({
@@ -14,6 +14,9 @@ export class PlayerPickerComponent {
   @Input()
   players: Player[] = [];
 
+  @Output()
+  readonly playersChange = new EventEmitter<Player[]>()
+
   @Input()
   maxPlayers: number = 0;
 
@@ -21,10 +24,12 @@ export class PlayerPickerComponent {
   }
 
   addPlayer(): void {
-
+    if (this.players.length >= this.maxPlayers) return;
+    // TODO:
   }
 
   deletePlayer(id: string): void {
-
+    const filteredPlayers = this.players.filter(it => it.id !== id);
+    this.playersChange.emit(filteredPlayers)
   }
 }

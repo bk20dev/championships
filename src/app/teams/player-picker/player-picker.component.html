@@ -9,7 +9,7 @@
     <em class="player__line">{{ player.dateOfBirth | age }} y/o</em>
   </li>
   <li class="card add">
-    <button (click)="addPlayer()" class="button">
+    <button (click)="addPlayer()" [disabled]="players.length >= maxPlayers" class="button add-button">
       <img alt="" class="button__icon" src="assets/add_FILL0_wght400_GRAD0_opsz24.svg"/>
     </button>
     <p>Add</p>
