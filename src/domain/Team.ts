@@ -1,9 +1,14 @@
 import {Player} from "./Player";
 
-export interface Team {
+export interface TeamPreview {
   readonly id: string;
   name: string;
-  players: Player[];
 }
 
-export type TeamPreview = Omit<Team, "players">;
+export interface Team extends TeamPreview {
+  players: Player[]
+}
+
+export interface TeamUpdate extends TeamPreview {
+  players: string[]
+}

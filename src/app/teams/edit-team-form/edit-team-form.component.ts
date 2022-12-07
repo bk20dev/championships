@@ -39,7 +39,7 @@ export class EditTeamFormComponent implements OnInit {
     if (this.updatedTeam && this.originalTeam) {
       const {players, id} = this.originalTeam
       this.teamService
-        .updateTeam({...this.updatedTeam, players, id})
+        .updateTeam({...this.updatedTeam, players: players.map(it => it.id), id})
         .subscribe(async () => {
           await this.router.navigate(["teams", id]);
         });

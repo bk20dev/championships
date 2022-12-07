@@ -20,6 +20,8 @@
     </ul>
   </header>
   <section class="pickers">
-    <app-player-picker [maxPlayers]="3" [players]="team.players" category="Keepers"></app-player-picker>
+    <app-player-picker (playersChange)="updatePlayers(category, $event)" *ngFor="let category of categories"
+                       [category]="category.name" [maxPlayers]="category.maxPlayers"
+                       [players]="category.players"></app-player-picker>
   </section>
 </article>

@@ -3,7 +3,7 @@ import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {map, Observable} from "rxjs";
 import {DataResponse} from "../../api/api";
-import {Team, TeamPreview} from "../../domain/Team";
+import {Team, TeamPreview, TeamUpdate} from "../../domain/Team";
 
 @Injectable({
   providedIn: "root",
@@ -27,13 +27,13 @@ export class TeamService {
       .pipe(map(response => response.data));
   }
 
-  createTeam(team: Omit<Team | TeamPreview, "id">): Observable<Team> {
+  createTeam(team: Omit<TeamUpdate | TeamPreview, "id">): Observable<Team> {
     return this.http
       .post<DataResponse<Team>>(TeamService.baseUrl, team)
       .pipe(map(response => response.data));
   }
 
-  updateTeam(team: Team): Observable<Team> {
+  updateTeam(team: TeamUpdate): Observable<Team> {
     const url = `${TeamService.baseUrl}/${team.id}`;
     return this.http
       .put<DataResponse<Team>>(url, team)
