@@ -14,6 +14,15 @@ export class PlayerSearchComponent {
   @Output()
   readonly select = new EventEmitter<Player>();
 
+  searchPhrase: string = "";
+
   constructor() {
+  }
+
+  matchesSearchPhrase(player: Player): boolean {
+    const {firstName, lastName, club} = player;
+    const candidates = [firstName, lastName, club];
+    const searchPhrase = this.searchPhrase.toLowerCase();
+    return candidates.some(it => it.toLowerCase().includes(searchPhrase))
   }
 }
