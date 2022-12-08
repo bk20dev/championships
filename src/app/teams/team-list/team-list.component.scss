@@ -6,6 +6,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(244px, 1fr));
   margin: 16px 24px 0;
+  gap: 12px;
 }
 
 .card {
