@@ -1,15 +1,10 @@
 import {Component, OnInit} from "@angular/core";
-import {Team, TeamUpdate} from "../../../domain/Team";
+import {Team} from "../../../domain/Team";
 import {TeamService} from "../team.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Player, PlayerPosition} from "../../../domain/Player";
-
-interface Category {
-  name: string;
-  key: PlayerPosition;
-  players: Player[];
-  maxPlayers: number;
-}
+import {PlayerService} from "../../players/player.service";
+import {Category} from "../Category";
 
 @Component({
   selector: "app-team-details",
@@ -17,47 +12,46 @@ interface Category {
   styleUrls: ["./team-details.component.scss"],
 })
 export class TeamDetailsComponent implements OnInit {
-  team: Team | undefined;
+
+  team?: Team;
+  players: Player[] = []
 
   readonly categories: Category[] = [
     {
       name: "Forwards",
       key: PlayerPosition.Forward,
-      players: [],
+      availablePlayers: [],
+      selectedPlayers: [],
       maxPlayers: 3,
     },
     {
       name: "Sweepers",
       key: PlayerPosition.Sweeper,
-      players: [],
+      availablePlayers: [],
+      selectedPlayers: [],
       maxPlayers: 3,
     },
     {
       name: "Half-backs",
       key: PlayerPosition.HalfBack,
-      players: [],
+      availablePlayers: [],
+      selectedPlayers: [],
       maxPlayers: 3,
     },
     {
       name: "Keepers",
       key: PlayerPosition.Keeper,
-      players: [],
+      availablePlayers: [],
+      selectedPlayers: [],
       maxPlayers: 1,
     }
   ]
 
   constructor(
     private teamService: TeamService,
+    private playerService: PlayerService,
     private route: ActivatedRoute,
     private router: Router) {
-  }
-
-  updatePlayers(category: Category, players: Player[]): void {
-    if (!this.team) return;
-    const playerIds = players.map(it => it.id)
-    const teamUpdate: TeamUpdate = {...this.team, players: playerIds}
-    this.teamService.updateTeam(teamUpdate).subscribe()
-    category.players = players;
   }
 
   ngOnInit(): void {
@@ -70,11 +64,39 @@ export class TeamDetailsComponent implements OnInit {
       .subscribe(team => {
         this.team = team;
       });
+
+    this.playerService
+      .getAllPlayers()
+      .subscribe(players => {
+        this.players = players
+        this.updateAvailablePlayers(this.categories)
+      })
+  }
+
+  updateForCategory(category: Category, selectedPlayers: Player[]): void {
+    if (!this.team) return
+    category.selectedPlayers = selectedPlayers;
+    this.updateAvailablePlayers([category]);
+    const playerIds = this.getSelectedPlayersIds();
+    this.teamService.updateTeam({...this.team, players: playerIds})
+  }
+
+  updateAvailablePlayers(categories: Category[]): void {
+    for (const category of categories) {
+      category.availablePlayers = this.players
+        .filter(player => player.position === category.key)
+        .filter(player => !category.selectedPlayers.includes(player));
+    }
+  }
+
+  getSelectedPlayersIds(): string[] {
+    return this.categories.reduce<string[]>((acc, val) => {
+      return [...acc, ...val.selectedPlayers.map(player => player.id)]
+    }, [])
   }
 
   deleteTeam(): void {
     if (!this.team) return;
-
     this.teamService
       .deleteTeam(this.team.id)
       .subscribe(() => {
