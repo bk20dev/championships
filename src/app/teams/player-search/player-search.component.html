@@ -1,14 +1,16 @@
-<div class="backdrop"></div>
+<div (click)="closeDialog()" class="backdrop"></div>
 
 <dialog open>
-  <button class="button close-button">
-    <img alt="" class="button__icon" src="assets/close_FILL0_wght400_GRAD0_opsz20.svg"/>
-  </button>
-  <p class="heading">Select player</p>
+  <header>
+    <p class="heading">Select player</p>
+    <button (click)="closeDialog()" class="button close-button">
+      <img alt="" class="button__icon" src="assets/close_FILL0_wght400_GRAD0_opsz20.svg"/>
+    </button>
+  </header>
   <input [(ngModel)]="searchPhrase" class="search" placeholder="Search..." type="text"/>
   <ul class="players">
     <ng-container *ngFor="let player of players">
-      <li *ngIf="matchesSearchPhrase(player)" class="player">
+      <li (click)="selectPlayer(player)" *ngIf="matchesSearchPhrase(player)" class="player">
         <img alt="" class="player-avatar" src="https://via.placeholder.com/48"/>
         <div class="player-info">
           <p class="player-name">{{ player.firstName }} {{ player.lastName }}</p>

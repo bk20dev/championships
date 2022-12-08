@@ -22,31 +22,29 @@ dialog {
   padding: 0 24px;
 }
 
-.heading {
-  font-size: 1.2em;
-  flex-grow: 1;
-  margin-bottom: 16px;
-  margin-top: 32px;
-  margin-left: 16px;
-}
+header {
+  display: flex;
+  align-items: center;
+  margin: 18px 0 8px;
 
-.button {
-  padding: 12px;
-  background-color: transparent;
-
-  &.close-button {
-    position: absolute;
-    top: 8px;
-    right: 8px;
+  .heading {
+    font-size: 1.2em;
+    flex-grow: 1;
+    margin-left: 16px;
   }
 
-  &:hover {
-    background-color: #f3f3f3;
-  }
+  .button {
+    padding: 12px;
+    background-color: transparent;
 
-  &__icon {
-    margin-right: 0;
-    filter: none;
+    &:hover {
+      background-color: #f3f3f3;
+    }
+
+    &__icon {
+      margin-right: 0;
+      filter: none;
+    }
   }
 }
 

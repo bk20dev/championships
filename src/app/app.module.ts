@@ -8,7 +8,7 @@ import {PlayerListComponent} from "./players/player-list/player-list.component";
 import {AgePipe} from "./age.pipe";
 import {PlayerDetailsComponent} from "./players/player-details/player-details.component";
 import {NewPlayerFormComponent} from "./players/new-player-form/new-player-form.component";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {EditPlayerFormComponent} from "./players/edit-player-form/edit-player-form.component";
 import {PlayerFormComponent} from "./players/player-form/player-form.component";
 import {TeamListComponent} from "./teams/team-list/team-list.component";
@@ -24,10 +24,11 @@ import {PlayerSearchComponent} from './teams/player-search/player-search.compone
     AgePipe, AppComponent, PlayerListComponent, NavigationComponent,
     PlayerDetailsComponent, NewPlayerFormComponent, EditPlayerFormComponent,
     PlayerFormComponent, TeamListComponent, TeamDetailsComponent,
-    TeamFormComponent, NewTeamFormComponent, EditTeamFormComponent, PlayerPickerComponent, PlayerSearchComponent,
+    TeamFormComponent, NewTeamFormComponent, EditTeamFormComponent,
+    PlayerPickerComponent, PlayerSearchComponent,
   ],
   imports: [
-    BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule,
+    BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule, FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

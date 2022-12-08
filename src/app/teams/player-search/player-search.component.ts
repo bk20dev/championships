@@ -14,6 +14,9 @@ export class PlayerSearchComponent {
   @Output()
   readonly select = new EventEmitter<Player>();
 
+  @Output()
+  readonly close = new EventEmitter<void>();
+
   searchPhrase: string = "";
 
   constructor() {
@@ -24,5 +27,13 @@ export class PlayerSearchComponent {
     const candidates = [firstName, lastName, club];
     const searchPhrase = this.searchPhrase.toLowerCase();
     return candidates.some(it => it.toLowerCase().includes(searchPhrase))
+  }
+
+  selectPlayer(player: Player): void {
+    this.select.emit(player)
+  }
+
+  closeDialog() {
+    this.close.emit();
   }
 }
