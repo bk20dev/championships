@@ -59,17 +59,23 @@ export class TeamDetailsComponent implements OnInit {
     const teamId = params.get("teamId");
     if (!teamId) return;
 
+    const postUpdate = () => {
+      this.updateSelectedPlayers();
+      this.updateAvailablePlayers(this.categories);
+    }
+
     this.teamService
       .getTeam(teamId)
       .subscribe(team => {
         this.team = team;
+        postUpdate();
       });
 
     this.playerService
       .getAllPlayers()
       .subscribe(players => {
-        this.players = players
-        this.updateAvailablePlayers(this.categories)
+        this.players = players;
+        postUpdate();
       })
   }
 
@@ -78,14 +84,24 @@ export class TeamDetailsComponent implements OnInit {
     category.selectedPlayers = selectedPlayers;
     this.updateAvailablePlayers([category]);
     const playerIds = this.getSelectedPlayersIds();
-    this.teamService.updateTeam({...this.team, players: playerIds})
+    this.teamService
+      .updateTeam({...this.team, players: playerIds})
+      .subscribe();
+  }
+
+  updateSelectedPlayers(): void {
+    if (!this.team) return;
+    for (const category of this.categories) {
+      category.selectedPlayers = this.team.players
+        .filter(player => player.position === category.key);
+    }
   }
 
   updateAvailablePlayers(categories: Category[]): void {
     for (const category of categories) {
       category.availablePlayers = this.players
         .filter(player => player.position === category.key)
-        .filter(player => !category.selectedPlayers.includes(player));
+        .filter(player => !category.selectedPlayers.some(it => it.id === player.id));
     }
   }
 
